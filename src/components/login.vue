@@ -74,7 +74,7 @@ export default {
   name: 'App',
   data () {
     return {
-      showLogin: 'cliente', // Inicia com o formulário de login do cliente
+      showLogin: 'cliente',
       isPassword: true
     }
   },
