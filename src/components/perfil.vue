@@ -10,7 +10,93 @@
             </div>
             <div class="conversa" @click="ir_erro">Conversas</div>
             <div class="foto_usuario" @click="ir_erro"></div>
-          </div>
+        </div>
+        <div class="fundo2">
+            <div class="container_foto">
+                <div class="foto_perfil"></div>
+            </div>
+            <div class="container_input2" name="exp">
+                <input class="input_informacao2" placeholder="Anos de experiencia" v-mask="'99'">
+                <div class="barra_inferior2"></div>
+              </div>
+              <div class="container_input2" name="funcionamento">
+                <input class="input_informacao2" placeholder="Horario de funcionamento" v-mask="'99:99 - 99:99'">
+                <div class="barra_inferior2"></div>
+              </div>
+            <div class="texto_filtros2" name="txt_areas">Suas areas de atuação:</div>
+            <div class="grid_container">
+                <div class="containeres" name="tb">
+                  <img src="@/assets/tb.png" class="img_pn">
+                  <div class="texto_filtros2">Trabalhista</div>
+                  <div @click="toggleCheck('var_tb')" class="container_check2">
+                    <div class="img_check" v-if="var_tb === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="pn">
+                  <img src="@/assets/pn.png" class="img_pn">
+                  <div class="texto_filtros2">Penal</div>
+                  <div @click="toggleCheck('var_pn')" class="container_check2">
+                    <div class="img_check" v-if="var_pn === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="dg">
+                  <img src="@/assets/dg.png" class="img_pn">
+                  <div class="texto_filtros2">Digital</div>
+                  <div @click="toggleCheck('var_dg')" class="container_check2">
+                    <div class="img_check" v-if="var_dg === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="cs">
+                  <img src="@/assets/cs.png" class="img_pn">
+                  <div class="texto_filtros2">Consumidor</div>
+                  <div @click="toggleCheck('var_cs')" class="container_check2">
+                    <div class="img_check" v-if="var_cs === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="tt">
+                  <img src="@/assets/tt.png" class="img_pn">
+                  <div class="texto_filtros2">Tributario</div>
+                  <div @click="toggleCheck('var_tt')" class="container_check2">
+                    <div class="img_check" v-if="var_tt === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="im">
+                  <img src="@/assets/im.png" class="img_pn">
+                  <div class="texto_filtros2">Imobiliario</div>
+                  <div @click="toggleCheck('var_im')" class="container_check2">
+                    <div class="img_check" v-if="var_im === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="am">
+                  <img src="@/assets/am.png" class="img_pn">
+                  <div class="texto_filtros2">Ambiental</div>
+                  <div @click="toggleCheck('var_am')" class="container_check2">
+                    <div class="img_check" v-if="var_am === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="cv">
+                  <img src="@/assets/cv.png" class="img_pn">
+                  <div class="texto_filtros2">Civil</div>
+                  <div @click="toggleCheck('var_cv')" class="container_check2">
+                    <div class="img_check" v-if="var_cv === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="ep">
+                  <img src="@/assets/ep.png" class="img_pn">
+                  <div class="texto_filtros2">Empresarial</div>
+                  <div @click="toggleCheck('var_ep')" class="container_check2">
+                    <div class="img_check" v-if="var_ep === 'true'"></div>
+                  </div>
+                </div>
+                <div class="containeres" name="ot">
+                  <img src="@/assets/ot.png" class="img_pn">
+                  <div class="texto_filtros2">Outros</div>
+                  <div @click="toggleCheck('var_ot')" class="container_check2">
+                    <div class="img_check" v-if="var_ot === 'true'"></div>
+                  </div>
+                </div>
+              </div>
+        </div>
         <div class="fundo_informacoes_perfil">
           <div class="texto_cadastro_adv">Atualizar informacoes</div>
           <div class="container_input" name="nome">
@@ -37,22 +123,6 @@
             <input class="input_informacao" placeholder="Telefone 2 (opcional)" v-mask="'(99) 99999-9999'">
             <div class="barra_inferior"></div>
           </div>
-          <div class="container_input" name="email">
-            <input class="input_informacao" type="email" placeholder="Endereço de email">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="email_confirma">
-            <input class="input_informacao" type="text" placeholder="Confirmar endereço de email">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="senha">
-            <input class="input_informacao" type="text" placeholder="Senha">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="senha_confirma">
-            <input class="input_informacao" type="text" placeholder="Confirmar senha">
-            <div class="barra_inferior"></div>
-          </div>
             <button class="button_att" type="button">Atualizar</button>
         </div>
 
@@ -75,12 +145,29 @@ export default{
     return {
       nome_usuario: 'usuario',
       showLogin: 'cliente',
-      erro: 'none'
+      erro: 'none',
+      var_tb: 'true',
+      var_pn: 'true',
+      var_dg: 'true',
+      var_cs: 'true',
+      var_tt: 'true',
+      var_im: 'true',
+      var_am: 'true',
+      var_cv: 'true',
+      var_ep: 'true',
+      var_ot: 'true'
     }
   },
   methods: {
     ir_erro () {
       this.$router.push('/erro')
+    },
+    toggleCheck (variableName) {
+      if (this[variableName] === 'false') {
+        this[variableName] = 'true'
+      } else if (this[variableName] === 'true') {
+        this[variableName] = 'false'
+      }
     }
   },
   directives: {
@@ -96,12 +183,97 @@ export default{
   box-sizing: border-box;
 }
 
+[name="txt_areas"] {
+    top: 11%;
+    position: relative;
+    width: 80%;
+    left: 4%;
+}
+
+[name="exp"] {
+    top: 15%;
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+[name="funcionamento"] {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 1%;
+}
+
+.foto_perfil {
+    background-image: url('~@/assets/foto.png');
+    background-size: cover;
+    height: 100%;
+}
+
+.container_check2 {
+    height: 3vh;
+    aspect-ratio: 1 / 1;
+    background-color: #b2b2b2;
+    border-radius: 8px;
+    border: 2px solid #6c6c6c;
+    cursor: pointer;
+  }
+
+  .img_check {
+    height: 100%;
+    width: 100%;
+    background-image: url('~@/assets/check.png');
+    background-size: cover;
+  }
+
+.container_foto {
+    background-color: #A40000;
+    aspect-ratio: 1 / 1;
+    width: 70%;
+    left: 15%;
+    top: 5%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.img_pn {
+    height: 4vh;
+    aspect-ratio: 1 / 1;
+  }
+
+  .grid_container {
+    top: 12%;
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5%;
+    left: 2.5%;
+  }
+
+  .containeres {
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.fundo2 {
+    background-color: white;
+    border-radius: 40px;
+    height: 81.48vh;
+    width: 24.27vw;
+    position: absolute;
+    left: 15.08%;
+    top: 13.44%;
+  }
+
 .background_perfil {
     background-color: rgb(131, 131, 131);
     background-position: center;
-    min-height: 100vh;
-    overflow: hidden;
-    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
   }
 
 .erro_cad {
@@ -113,6 +285,15 @@ export default{
   top: 1%;
   left: 10.73%;
 }
+
+.texto_filtros2 {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    position: relative;
+  }
 
 .container_erro_cad {
   position: absolute;
@@ -226,10 +407,10 @@ input::-webkit-inner-spin-button {
 .fundo_informacoes_perfil    {
   background-color: white;
   border-radius: 5%;
-  height: 81.48vh;
+  height: 60.48vh;
   width: 44.27vw;
   position: absolute;
-  left: 50.08%;
+  left: 45.08%;
   top: 13.44%;
 }
 
@@ -285,55 +466,13 @@ input::-webkit-inner-spin-button {
   border-radius: 5%;
   width: 16.56vw;
   height: 4.91vh;
-  top: 40.5%;
-  left: 57%;
+  top: 30.5%;
+  left: 31%;
   cursor: pointer;
 }
 
 .button_att:hover {
   color: #8d8d8d;
-}
-
-.button_cadastro_cli {
-  position: relative;
-  font-size: 28px;
-  font-family: 'Roboto';
-  font-weight: 600;
-  color: #ffffff;
-  text-align: center;
-  background-color: #A40000;
-  border: 3px solid #A40000;
-  border-radius: 5%;
-  width: 16.56vw;
-  height: 4.91vh;
-  top: 44.6%;
-  left: 57%;
-  cursor: pointer;
-}
-
-.button_cadastro_cli:hover {
-  color: #8d8d8d;
-}
-
-.already_cadastro_adv {
-  position: absolute;
-  font-size: 18px;
-  font-family: 'Roboto';
-  font-weight: 600;
-  top: 89.56%;
-  left: 5.17%;
-  text-align: center;
-  color: #959595;
-}
-
-.fazer_login_adv {
-  color: #A40000;
-  cursor: pointer;
-}
-
-.fazer_login_adv:hover {
-  color: #b45f5f;
-  cursor: pointer;
 }
 
 [name="nome"] {
@@ -356,16 +495,6 @@ input::-webkit-inner-spin-button {
   top: 22%;
 }
 
-[name="email"] {
-  left: 6%;
-  top: 32%
-}
-
-[name="senha"] {
-  left: 6%;
-  top: 34%;
-}
-
 [name="cpf"] {
   left: 57%;
   top: 7.8%;
@@ -386,30 +515,36 @@ input::-webkit-inner-spin-button {
   top: 17.8%;
 }
 
-[name="email_confirma"] {
-  left: 57%;
-  top: 27.8%;
-}
+.container_input2 {
+    background-color: #b2b2b2;
+    border-radius: 5px;
+    height: 6%;
+  }
 
-[name="senha_confirma"] {
-  left: 57%;
-  top: 29.8%;
-}
+.input_informacao2 {
+    background-color: #8d8d8d00;
+    font-size: 18px;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    width: 92%;
+    border: none;
+    font-family: 'Roboto';
+    font-weight: 600;
+  }
 
-.slide-fade2-enter-active {
-  transition: opacity 1s ease;
-}
+  .input_informacao2:focus {
+    outline: none;
+  }
 
-.slide-fade2-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.slide-fade2-enter {
-  opacity: 0;
-}
-
-.slide-fade2-leave-to {
-  opacity: 0;
-}
-
+  .barra_inferior2 {
+    background-color: #6c6c6c;
+    height: 7%;
+    width: 85%;
+    left: 7.5%;
+    position: relative;
+    top: 20%;
+  }
 </style>
