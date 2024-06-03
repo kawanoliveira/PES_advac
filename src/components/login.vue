@@ -123,11 +123,6 @@ html, body {
   position: relative;
 }
 
-.top-bar {
-  background-color: #A40000;
-  height: 8.33vh;
-}
-
 .content {
   position: absolute;
   top: 30.65%;
@@ -155,6 +150,11 @@ html, body {
   background-size: cover;
   height: 23.98vh;
   aspect-ratio: 156.76 / 100;
+}
+
+.top-bar {
+  background-color: #A40000;
+  height: 8.33vh;
 }
 
 .cliente {
