@@ -1,5 +1,5 @@
 <template>
-  <div class="texto">Não Implementado</div>
+  <div class="textoa">Não Implementado</div>
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
     text-align: center;
   }
 
-  .texto {
+  .textoa {
     font-family: 'Roboto';
     font-weight: 600;
     font-size: 126px;

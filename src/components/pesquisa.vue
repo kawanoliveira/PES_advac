@@ -43,7 +43,7 @@
         <div class="texto_filtros" name="areas">Áreas de atuação:</div>
         <div class="grid_container">
           <div class="containeres" name="tb">
-            <img src="@/assets/tb.png" class="img">
+            <img src="@/assets/tb.png" class="img_pn">
             <div class="texto_filtros2">Trabalhista</div>
             <div @click="toggleCheck('var_tb')" class="container_check2">
               <div class="img_check" v-if="var_tb === 'true'"></div>
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="containeres" name="tt">
-            <img src="@/assets/tt.png" class="img">
+            <img src="@/assets/tt.png" class="img_pn">
             <div class="texto_filtros2">Tributario</div>
             <div @click="toggleCheck('var_tt')" class="container_check2">
               <div class="img_check" v-if="var_tt === 'true'"></div>
@@ -123,6 +123,17 @@
           :distancia="item.distancia"
           :horario="item.horario"
           :tempo="item.tempo"
+          :tb="item.tb"
+          :pn="item.pn"
+          :cs="item.cs"
+          :tt="item.tt"
+          :im="item.im"
+          :am="item.am"
+          :dg="item.dg"
+          :cv="item.cv"
+          :ep="item.ep"
+          :ot="item.ot"
+          :mr="item.mr"
           />
         </div>
       </div>
@@ -149,26 +160,17 @@ export default {
       var_ot: 'true',
       nome_usuario: 'usuario',
       resultados: [
-        // <img src="@/assets/tb.png" class="img">
-        { imagem: require('@/assets/foto.png'), nome: 'Alex Ronaldo Lopes', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' },
-        { imagem: 'caminho_para_imagem2.jpg', texto: 'Texto do card 2' }
-        // Adicione mais dados conforme necessário
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', dg: 'true', am: 'true', cv: 'true', tt: 'true', mr: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', im: 'true', ot: 'true', pn: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' },
+        { imagem: require('@/assets/foto.png'), nome: 'Walid Mouhanna Advogado Criminal', distancia: '1.74km', horario: '08:00 - 17:00', tempo: '3', tb: 'true', cs: 'true', ep: 'true' }
       ]
     }
   },

@@ -65,6 +65,11 @@
           </div>
         </transition>
       </div>
+      <div class="container_erro">
+        <div class="erro" v-if="erro === 'erro_email'">Endereço de Email invalido</div>
+        <div class="erro" v-if="erro === 'erro_senha'">Senha Incorreta</div>
+        <div class="erro" v-if="erro === 'erro_campos'">Preencha todos os campos</div>
+      </div>
     </div>
   </div>
 </template>
@@ -75,7 +80,8 @@ export default {
   data () {
     return {
       showLogin: 'cliente',
-      isPassword: true
+      isPassword: true,
+      erro: 'none'
     }
   },
   methods: {
@@ -84,6 +90,7 @@ export default {
     },
     toggleView (view) {
       this.showLogin = view
+      this.erro = 'none'
     },
     ir_cadastro () {
       this.$router.push('/cadastro')
@@ -103,6 +110,24 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.erro {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 16px;
+  color: rgb(197, 0, 0);
+  text-align: center;
+  top: 1%;
+  left: 10.73%;
+}
+
+.container_erro {
+  position: absolute;
+  top: 73%;
+  left: 63%;
+  align-items: center;
+  width: 22.5vw;
 }
 
 html, body {
@@ -211,9 +236,9 @@ html, body {
   position: absolute;
   background-image: url('~@/assets/contato.png');
   background-size: cover;
-  width: 9.06vw;
+  aspect-ratio: 100 / 33;
   height: 5.19vh;
-  top: 1%;
+  top: 1.5%;
   left: 89.58%;
   cursor: pointer;
 }

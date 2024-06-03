@@ -1,17 +1,20 @@
 <template>
   <div id="pag_cadastro">
-    <div class="background_cadastro">
-      <div class="top-bar">
-        <div class="cliente" :class="{ 'cliente-underlined': showLogin === 'cliente' }" @click="toggleView('cliente')">Cliente</div>
-        <div class="advogado" :class="{ 'advogado-underlined': showLogin === 'advogado' }" @click="toggleView('advogado')">Advogado</div>
-        <div class="logo_topbar"></div>
-        <div class="contato" @click="ir_erro"></div>
-      </div>
-      <transition name="slide-fade2">
-        <div class="fundo_cadastro_adv" v-if="showLogin === 'advogado'">
-          <div class="texto_cadastro_adv">Cadastro como Advogado</div>
+    <div class="background_perfil">
+        <div class="top-bar">
+            <div class="seu_perfil">Seu Perfil</div>
+            <div class="processos" @click="ir_erro">Seus processos</div>
+            <div class="logo_topbar"></div>
+            <div class="nome_usuario_container">
+              <div class="nome_usuario" @click="ir_erro">{{ nome_usuario }}</div>
+            </div>
+            <div class="conversa" @click="ir_erro">Conversas</div>
+            <div class="foto_usuario" @click="ir_erro"></div>
+          </div>
+        <div class="fundo_informacoes_perfil">
+          <div class="texto_cadastro_adv">Atualizar informacoes</div>
           <div class="container_input" name="nome">
-            <input class="input_informacao" type="text" placeholder="Nome">
+            <input class="input_informacao" type="text" placeholder="Nome" v-model="nome_usuario">
             <div class="barra_inferior"></div>
           </div>
           <div class="container_input" name="cpf">
@@ -50,56 +53,9 @@
             <input class="input_informacao" type="text" placeholder="Confirmar senha">
             <div class="barra_inferior"></div>
           </div>
-            <button class="button_cadastro" type="button">CADASTRAR-SE</button>
-            <div class="already_cadastro_adv">Já tem uma conta? <span class="fazer_login_adv" @click="ir_login">Realizar Login</span>
-          </div>
+            <button class="button_att" type="button">Atualizar</button>
         </div>
-      </transition>
 
-      <transition name="slide-fade2">
-        <div class="fundo_cadastro_cli" v-if="showLogin === 'cliente'">
-          <div class="texto_cadastro_adv">Cadastro como Cliente</div>
-          <div class="container_input" name="nome">
-            <input class="input_informacao" type="text" placeholder="Nome">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="cpf">
-            <input class="input_informacao" placeholder="CPF" v-mask="'999.999.999-99'">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="tel1_cli">
-            <input class="input_informacao" placeholder="Telefone 1" v-mask="'(99) 99999-9999'">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="tel2_cli">
-            <input class="input_informacao" placeholder="Telefone 2 (opcional)" v-mask="'(99) 99999-9999'">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="endereco">
-            <input class="input_informacao" type="text" placeholder="Endereço">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="email">
-            <input class="input_informacao" type="email" placeholder="Endereço de email">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="email_confirma">
-            <input class="input_informacao" type="text" placeholder="Confirmar endereço de email">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="senha">
-            <input class="input_informacao" type="text" placeholder="Senha">
-            <div class="barra_inferior"></div>
-          </div>
-          <div class="container_input" name="senha_confirma">
-            <input class="input_informacao" type="text" placeholder="Confirmar senha">
-            <div class="barra_inferior"></div>
-          </div>
-            <button class="button_cadastro_cli" type="button" @click="ir_home">CADASTRAR-SE</button>
-            <div class="already_cadastro_adv">Já tem uma conta? <span class="fazer_login_adv" @click="ir_login">Realizar Login</span>
-          </div>
-        </div>
-      </transition>
       <div class="container_erro_cad">
         <div class="erro_cad" v-if="erro === 'erro_email'">Emails diferentes</div>
         <div class="erro_cad" v-if="erro === 'erro_senha'">Senhas diferentes</div>
@@ -117,23 +73,14 @@ export default{
   name: 'App',
   data () {
     return {
+      nome_usuario: 'usuario',
       showLogin: 'cliente',
-      erro: 'erro_cpf'
+      erro: 'none'
     }
   },
   methods: {
-    ir_login () {
-      this.$router.push('/')
-    },
-    ir_home () {
-      this.$router.push('/home')
-    },
     ir_erro () {
       this.$router.push('/erro')
-    },
-    toggleView (view) {
-      this.showLogin = view
-      this.erro = 'none'
     }
   },
   directives: {
@@ -148,6 +95,14 @@ export default{
   padding: 0;
   box-sizing: border-box;
 }
+
+.background_perfil {
+    background-color: rgb(131, 131, 131);
+    background-position: center;
+    min-height: 100vh;
+    overflow: hidden;
+    overflow-x: hidden;
+  }
 
 .erro_cad {
   font-family: 'Roboto';
@@ -179,58 +134,42 @@ input::-webkit-inner-spin-button {
   overflow: hidden;
 }
 
-.background_cadastro {
-  background-image: url('~@/assets/background_cadastro.png');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  overflow: hidden;
-  overflow-x: hidden;
+.seu_perfil {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  top: 1%;
+  left: 14.73%;
+  text-decoration: underline;
+}
+
+.seu_perfil:hover {
+  color: #8d8d8d;
+}
+
+.processos {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  top: 1%;
+  left: 31.07%;
+  cursor: pointer;
+}
+
+.processos:hover {
+  color: #8d8d8d;
 }
 
 .top-bar {
   background-color: #A40000;
   height: 8.33vh;
-}
-
-.cliente {
-  font-family: 'Roboto';
-  font-weight: 600;
-  font-size: 36px;
-  color: white;
-  display: inline-block;
-  cursor: pointer;
-  position: absolute;
-  top: 1%;
-  left: 10.73%;
-}
-
-.cliente:hover {
-  color: #8d8d8d;
-}
-
-.cliente-underlined {
-  text-decoration: underline;
-}
-
-.advogado {
-  font-family: 'Roboto';
-  font-weight: 600;
-  font-size: 36px;
-  color: white;
-  display: inline-block;
-  position: absolute;
-  top: 1%;
-  left: 23.07%;
-  cursor: pointer;
-}
-
-.advogado:hover {
-  color: #8d8d8d;
-}
-
-.advogado-underlined {
-  text-decoration: underline;
 }
 
 .logo_topbar {
@@ -243,38 +182,54 @@ input::-webkit-inner-spin-button {
   left: 1.35%;
 }
 
-.contato {
-  position: absolute;
-  background-image: url('~@/assets/contato.png');
+.foto_usuario {
+  height: 6.5vh;
+  aspect-ratio: 1;
+  background-image: url('~@/assets/user.png');
   background-size: cover;
-  aspect-ratio: 100 / 33;
-  height: 5.19vh;
-  top: 1.5%;
-  left: 89.58%;
+  position: absolute;
+  top: 1%;
+  right: 1%;
   cursor: pointer;
 }
 
-.contato:hover {
-  background-image: url('~@/assets/contatohover.png');
+.conversa {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  display: inline-block;
+  position: absolute;
   top: 1%;
+  right: 35%;
+  text-align: right;
+  cursor: pointer;
 }
 
-.fundo_cadastro_adv {
-  background-color: white;
-  border-radius: 5%;
-  height: 81.48vh;
-  width: 44.27vw;
-  position: absolute;
-  left: 27.08%;
-  top: 13.44%;
+.conversa:hover {
+  color: #b2b2b2;
 }
-.fundo_cadastro_cli {
+
+.nome_usuario_container {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 36px;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  top: 1%;
+  right: 5%;
+  text-align: right;
+  cursor: pointer;
+}
+
+.fundo_informacoes_perfil    {
   background-color: white;
   border-radius: 5%;
   height: 81.48vh;
   width: 44.27vw;
   position: absolute;
-  left: 27.08%;
+  left: 50.08%;
   top: 13.44%;
 }
 
@@ -284,8 +239,9 @@ input::-webkit-inner-spin-button {
   font-family: 'Roboto';
   font-weight: 600;
   top: 3%;
-  left: 25%;
+  left: 27%;
 }
+
 .container_input {
   background-color: #ffffff;
   width: 16.56vw;
@@ -317,7 +273,7 @@ input::-webkit-inner-spin-button {
   bottom: 86%;
 }
 
-.button_cadastro {
+.button_att {
   position: relative;
   font-size: 28px;
   font-family: 'Roboto';
@@ -334,7 +290,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.button_cadastro:hover {
+.button_att:hover {
   color: #8d8d8d;
 }
 

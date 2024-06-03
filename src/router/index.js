@@ -4,6 +4,7 @@ import Login from '@/components/login'
 import cadastro from '@/components/cadastro.vue'
 import pesquisa from '@/components/pesquisa.vue'
 import naoimplementado from '@/components/naoimplementado.vue'
+import perfil from '@/components/perfil.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: '/erro',
       name: 'erro',
       component: naoimplementado
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: perfil
     }
   ]
 })
